@@ -19,3 +19,10 @@ def list_pieces(catalog):
     for piece in catalog:
         names.append(piece["name"])
     return names
+
+def find_piece_by_id(catalog, id):
+    validate_id(id)
+    for piece in catalog:
+        if piece["id"] == id:
+            return piece
+    return None
