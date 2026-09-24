@@ -82,3 +82,26 @@ def piece_exists(catalog, id):
     if piece is not None:
         return True
     return False
+
+def filter_by_status(catalog, status):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+    
+    validate_status(status)
+
+    filtered_catalog = []
+    for piece in catalog:
+        if piece["status"] == status:
+            filtered_catalog.append(piece)
+    return filtered_catalog
+
+def filter_by_min_price(catalog, price):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+    validate_price(price)
+    
+    filtered_catalog = []
+    for piece in catalog:
+        if piece["price"] > price:
+            filtered_catalog.append(piece)
+    return filtered_catalog
