@@ -60,4 +60,25 @@ def get_catalog_summary(catalog):
             summary[category] = 1
     return summary
 
-    
+def get_pieces_by_category(catalog, category):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+
+    names = []
+
+    for piece in catalog:
+        if piece["category"] == category:
+            names.append(piece["name"])
+
+    return names
+
+def piece_exists(catalog, id):
+    if not isinstance(catalog, list):
+        raise ValueError("El catálogo debe ser una lista")
+    validate_id(id)
+
+    piece = find_piece_by_id(catalog, id)
+
+    if piece is not None:
+        return True
+    return False
