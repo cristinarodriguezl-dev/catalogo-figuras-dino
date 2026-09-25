@@ -3,6 +3,8 @@ def validate_name(name):
         raise ValueError("El nombre no puede estar vacío")
 
 def validate_price(price):
+    if not isinstance(price, (float, int)):
+        raise ValueError("El precio debe ser un número")
     if price <= 0:
         raise ValueError("El precio debe ser mayor que cero")
 
