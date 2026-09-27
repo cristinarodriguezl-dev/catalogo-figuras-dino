@@ -115,3 +115,13 @@ def get_average_price(catalog):
     for piece in catalog:
         total_price += piece["price"]
     return total_price / len(catalog)
+
+def ask_for_value(message, validation, converter=str):
+    while True:
+        try:
+            value = input(message)
+            value = converter(value)
+            validation(value)
+            return value
+        except ValueError as error:
+            print(f"Error: {error}")
